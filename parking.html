@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyderabad Parking | One-Page Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #1a237e;
+            --secondary: #ff6b35;
+            --accent: #00bcd4;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+        }
+
+        body {
+            background: #ffffff;
+            color: #333;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--secondary);
+            font-size: 28px;
+        }
+
+        .logo h1 {
+            color: var(--primary);
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 16px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-nav {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-login {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-register {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 100px 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Hero Section */
+        #home {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .btn-hero {
+            padding: 15px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Features Section */
+        #features {
+            background: var(--light);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            color: var(--primary);
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card i {
+            font-size: 48px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        /* Login/Register Sections */
+        #login, #register {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .auth-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .auth-container h2 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
+        }
+
+        .btn-auth {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--secondary), #e64a19);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+        .btn-auth:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3);
+        }
+
+        .auth-switch {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .auth-switch a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Dashboard Section */
+        #dashboard {
+            background: var(--light);
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .dashboard-header h2 {
+            color: var(--primary);
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .user-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .stat-card i {
+            font-size: 32px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--dark);
+            margin: 10px 0;
+        }
+
+        /* Parking Slots */
+        .parking-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .location-tabs {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .location-tab {
+            padding: 12px 25px;
+            background: var(--light);
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .location-tab.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .slots-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 12px;
+            margin: 30px 0;
+        }
+
+        .slot {
+            height: 70px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .slot.available {
+            background: linear-gradient(135deg, #28a745, #1e7e34);
+            color: white;
+            border: 2px solid #28a745;
+        }
+
+        .slot.booked {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+            border: 2px solid #dc3545;
+            cursor: not-allowed;
+        }
+
+        .slot.selected {
+            background: linear-gradient(135deg, var(--accent), #0097a7);
+            color: white;
+            border: 2px solid var(--accent);
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.4);
+        }
+
+        .booking-summary {
+            background: var(--light);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* About & Contact Sections */
+        #about, #contact {
+            background: white;
+        }
+
+        .content-card {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .location-item {
+            background: var(--light);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* Messages */
+        .message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .slots-container {
+                grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <i class="fas fa-parking"></i>
+                <h1>Hyderabad<span>Parking</span></h1>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <div class="nav-buttons">
+                <button class="btn-nav btn-login" onclick="showSection('login')">Login</button>
+                <button class="btn-nav btn-register" onclick="showSection('register')">Register</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Smart Parking Solutions for Hyderabad</h1>
+                <p>Book your parking slot instantly across premium locations in Hyderabad. Hassle-free parking with real-time availability.</p>
+                <div class="hero-buttons">
+                    <button class="btn-hero btn-primary" onclick="showSection('register')">
+                        <i class="fas fa-car"></i> Book Now
+                    </button>
+                    <button class="btn-hero btn-secondary" onclick="showSection('features')">
+                        <i class="fas fa-info-circle"></i> Learn More
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+                <p>Premium features for seamless parking experience</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Instant Booking</h3>
+                    <p>Book your parking slot in under 30 seconds with our fast booking system.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Secure Payments</h3>
+                    <p>100% secure payments with multiple payment options including UPI, Cards & Wallet.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Prime Locations</h3>
+                    <p>Premium locations across Hyderabad including Charminar, Punjagutta & more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Section -->
+    <section id="login">
+        <div class="container">
+            <div class="auth-container">
+                <h2><i class="fas fa-sign-in-alt"></i> Login</h2>
+                <div class="message error" id="loginError"></div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="loginEmail" class="form-control" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password">
+                </div>
+                <button class="btn-auth" onclick="login()">Login</button>
+                <div class="auth-switch">
+                    Don't have an account? <a onclick="showSection('register')">Register here</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Register Section -->
+    <section id="register">
+        <div class="container">
+            <div class="auth-container">
+                <h2><i class="fas fa-user-plus"></i> Register</h2>
+                <div class="message error" id="registerError"></div>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="registerName" class="form-control" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="registerEmail" class="form-control" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="registerPhone" class="form-control" placeholder="Enter your phone">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="registerPassword" class="form-control" placeholder="Create password">
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="registerConfirm" class="form-control" placeholder="Confirm password">
+                </div>
+                <button class="btn-auth" onclick="register()">Register</button>
+                <div class="auth-switch">
+                    Already have an account? <a onclick="showSection('login')">Login here</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h2>Your Dashboard</h2>
+                <p>Manage your parking bookings and wallet</p>
+            </div>
+            
+            <div class="user-card">
+                <div class="user-info">
+                    <div class="user-avatar" id="userAvatar">U</div>
+                    <div>
+                        <h2 id="userName">Welcome, User</h2>
+                        <p id="userEmail">user@example.com</p>
+                        <div style="display: flex; gap: 20px; margin-top: 10px;">
+                            <div style="padding: 8px 20px; background: var(--light); border-radius: 20px;">
+                                <i class="fas fa-wallet"></i> ₹<span id="userBalance">500</span>
+                            </div>
+                            <div style="padding: 8px 20px; background: var(--light); border-radius: 20px;">
+                                <i class="fas fa-car"></i> <span id="userBookings">0</span> Bookings
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="stat-number">8</div>
+                    <div>Locations</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-car"></i>
+                    <div class="stat-number" id="availableSlots">120</div>
+                    <div>Available Slots</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-clock"></i>
+                    <div class="stat-number">24/7</div>
+                    <div>Support</div>
+                </div>
+            </div>
+            
+            <div class="parking-section">
+                <h3>Book Parking Slot</h3>
+                <div class="location-tabs" id="locationTabs">
+                    <!-- Location tabs will be generated here -->
+                </div>
+                
+                <div class="slots-container" id="slotsContainer">
+                    <!-- Parking slots will be generated here -->
+                </div>
+                
+                <div class="booking-summary">
+                    <h4>Booking Summary</h4>
+                    <div class="summary-item">
+                        <span>Location:</span>
+                        <span id="summaryLocation">None selected</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Selected Slot:</span>
+                        <span id="summarySlot">None selected</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Duration:</span>
+                        <span>
+                            <select id="bookingDuration" style="padding: 8px; border-radius: 5px; border: 1px solid #ddd;">
+                                <option value="1">1 hour</option>
+                                <option value="2">2 hours</option>
+                                <option value="3">3 hours</option>
+                                <option value="4">4 hours</option>
+                            </select>
+                        </span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Total Amount:</span>
+                        <span id="summaryTotal" style="color: var(--secondary);">₹0</span>
+                    </div>
+                    
+                    <button class="btn-auth" onclick="confirmBooking()" style="margin-top: 20px;">
+                        <i class="fas fa-calendar-check"></i> Confirm Booking
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="content-card">
+                <h2>About Hyderabad Parking</h2>
+                <p style="margin: 20px 0 30px;">We provide premium parking solutions across Hyderabad with real-time availability and instant booking confirmation.</p>
+                
+                <h3 style="margin: 30px 0 20px;">Our Locations</h3>
+                <div class="locations-grid">
+                    <div class="location-item">
+                        <h4><i class="fas fa-mosque"></i> Charminar</h4>
+                        <p>₹50/hour</p>
+                        <p>40 slots</p>
+                    </div>
+                    <div class="location-item">
+                        <h4><i class="fas fa-water"></i> Lake Shore</h4>
+                        <p>₹60/hour</p>
+                        <p>35 slots</p>
+                    </div>
+                    <div class="location-item">
+                        <h4><i class="fas fa-building"></i> Punjagutta</h4>
+                        <p>₹70/hour</p>
+                        <p>50 slots</p>
+                    </div>
+                    <div class="location-item">
+                        <h4><i class="fas fa-shopping-bag"></i> Ameerpet</h4>
+                        <p>₹65/hour</p>
+                        <p>45 slots</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="content-card">
+                <h2>Contact Us</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px;">
+                    <div>
+                        <h3>Get in Touch</h3>
+                        <p style="margin: 20px 0;"><i class="fas fa-phone"></i> +91 98765 43210</p>
+                        <p style="margin: 20px 0;"><i class="fas fa-envelope"></i> support@hyderabadparking.com</p>
+                        <p style="margin: 20px 0;"><i class="fas fa-map-marker-alt"></i> HITEC City, Hyderabad</p>
+                    </div>
+                    <div>
+                        <h3>Business Hours</h3>
+                        <p style="margin: 20px 0;">Monday - Saturday: 8:00 AM - 10:00 PM</p>
+                        <p style="margin: 20px 0;">Sunday: 9:00 AM - 8:00 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // ============================================
+        // DATABASE
+        // ============================================
+        let users = [];
+        let bookings = [];
+        let currentUser = null;
+        let selectedLocation = 'charminar';
+        let selectedSlot = null;
+        
+        // Load from localStorage
+        if (localStorage.getItem('hp_users')) {
+            users = JSON.parse(localStorage.getItem('hp_users'));
+        } else {
+            // Demo users
+            users = [
+                {
+                    id: 1,
+                    name: "John Deccan",
+                    email: "john@example.com",
+                    phone: "9876543210",
+                    password: "123456",
+                    balance: 850,
+                    bookings: 3
+                },
+                {
+                    id: 2,
+                    name: "Fatima Begum",
+                    email: "fatima@example.com",
+                    phone: "9876543211",
+                    password: "123456",
+                    balance: 1200,
+                    bookings: 5
+                }
+            ];
+            localStorage.setItem('hp_users', JSON.stringify(users));
+        }
+        
+        if (localStorage.getItem('hp_bookings')) {
+            bookings = JSON.parse(localStorage.getItem('hp_bookings'));
+        }
+        
+        // Parking locations
+        const locations = {
+            'charminar': { name: 'Charminar Parking', rate: 50, totalSlots: 40, icon: 'fa-mosque' },
+            'lakeshore': { name: 'Lake Shore Parking', rate: 60, totalSlots: 35, icon: 'fa-water' },
+            'punjagutta': { name: 'Punjagutta Parking', rate: 70, totalSlots: 50, icon: 'fa-building' },
+            'ameerpet': { name: 'Ameerpet Parking', rate: 65, totalSlots: 45, icon: 'fa-shopping-bag' }
+        };
+        
+        // ============================================
+        // SECTION NAVIGATION
+        // ============================================
+        function showSection(sectionId) {
+            console.log("Scrolling to section:", sectionId);
+            
+            // Smooth scroll to section
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // Update navigation
+            updateNavigation();
+            
+            // If showing dashboard and user is logged in, update it
+            if (sectionId === 'dashboard' && currentUser) {
+                updateDashboard();
+            }
+        }
+        
+        function updateNavigation() {
+            const navButtons = document.querySelector('.nav-buttons');
+            if (currentUser) {
+                navButtons.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 35px; height: 35px; background: #ff6b35; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                            ${currentUser.name.split(' ').map(n => n[0]).join('')}
+                        </div>
+                        <button class="btn-nav btn-login" onclick="logout()">Logout</button>
+                    </div>
+                `;
+            } else {
+                navButtons.innerHTML = `
+                    <button class="btn-nav btn-login" onclick="showSection('login')">Login</button>
+                    <button class="btn-nav btn-register" onclick="showSection('register')">Register</button>
+                `;
+            }
+        }
+        
+        // ============================================
+        // AUTHENTICATION
+        // ============================================
+        function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const error = document.getElementById('loginError');
+            
+            if (!email || !password) {
+                error.textContent = 'Please enter email and password';
+                error.style.display = 'block';
+                return;
+            }
+            
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                currentUser = user;
+                error.style.display = 'none';
+                
+                // Clear form
+                document.getElementById('loginEmail').value = '';
+                document.getElementById('loginPassword').value = '';
+                
+                // Show success and go to dashboard
+                showMessage('Login successful!', 'success');
+                setTimeout(() => showSection('dashboard'), 500);
+            } else {
+                error.textContent = 'Invalid email or password';
+                error.style.display = 'block';
+            }
+        }
+        
+        function register() {
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const phone = document.getElementById('registerPhone').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirm = document.getElementById('registerConfirm').value;
+            const error = document.getElementById('registerError');
+            
+            // Validation
+            if (!name || !email || !phone || !password || !confirm) {
+                error.textContent = 'Please fill all fields';
+                error.style.display = 'block';
+                return;
+            }
+            
+            if (password.length < 6) {
+                error.textContent = 'Password must be at least 6 characters';
+                error.style.display = 'block';
+                return;
+            }
+            
+            if (password !== confirm) {
+                error.textContent = 'Passwords do not match';
+                error.style.display = 'block';
+                return;
+            }
+            
+            if (users.find(u => u.email === email)) {
+                error.textContent = 'Email already registered';
+                error.style.display = 'block';
+                return;
+            }
+            
+            // Create new user
+            const newUser = {
+                id: users.length + 1,
+                name: name,
+                email: email,
+                phone: phone,
+                password: password,
+                balance: 500,
+                bookings: 0
+            };
+            
+            users.push(newUser);
+            localStorage.setItem('hp_users', JSON.stringify(users));
+            currentUser = newUser;
+            
+            // Clear form
+            document.getElementById('registerName').value = '';
+            document.getElementById('registerEmail').value = '';
+            document.getElementById('registerPhone').value = '';
+            document.getElementById('registerPassword').value = '';
+            document.getElementById('registerConfirm').value = '';
+            
+            error.style.display = 'none';
+            
+            // Show success and go to dashboard
+            showMessage('Registration successful!', 'success');
+            setTimeout(() => showSection('dashboard'), 500);
+        }
+        
+        function logout() {
+            currentUser = null;
+            updateNavigation();
+            showSection('home');
+            showMessage('Logged out successfully', 'success');
+        }
+        
+        // ============================================
+        // DASHBOARD FUNCTIONS
+        // ============================================
+        function updateDashboard() {
+            if (!currentUser) return;
+            
+            // Update user info
+            document.getElementById('userAvatar').textContent = 
+                currentUser.name.split(' ').map(n => n[0]).join('');
+            document.getElementById('userName').textContent = `Welcome, ${currentUser.name}`;
+            document.getElementById('userEmail').textContent = currentUser.email;
+            document.getElementById('userBalance').textContent = currentUser.balance;
+            document.getElementById('userBookings').textContent = currentUser.bookings || 0;
+            
+            // Generate location tabs
+            generateLocationTabs();
+            
+            // Generate parking slots
+            generateParkingSlots();
+        }
+        
+        function generateLocationTabs() {
+            const container = document.getElementById('locationTabs');
+            container.innerHTML = '';
+            
+            Object.keys(locations).forEach(locationId => {
+                const location = locations[locationId];
+                const button = document.createElement('button');
+                button.className = `location-tab ${locationId === selectedLocation ? 'active' : ''}`;
+                button.innerHTML = `<i class="fas ${location.icon}"></i> ${location.name}`;
+                button.onclick = () => {
+                    selectedLocation = locationId;
+                    document.querySelectorAll('.location-tab').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    button.classList.add('active');
+                    generateParkingSlots();
+                    updateBookingSummary();
+                };
+                container.appendChild(button);
+            });
+        }
+        
+        function generateParkingSlots() {
+            const location = locations[selectedLocation];
+            const container = document.getElementById('slotsContainer');
+            container.innerHTML = '';
+            
+            const totalSlots = location.totalSlots;
+            const availableSlots = Math.floor(totalSlots * 0.6);
+            
+            // Create booked slots array
+            const bookedSlots = [];
+            for (let i = 0; i < totalSlots - availableSlots; i++) {
+                bookedSlots.push(Math.floor(Math.random() * totalSlots) + 1);
+            }
+            
+            // Generate slots
+            let availableCount = 0;
+            for (let i = 1; i <= Math.min(totalSlots, 24); i++) {
+                const slot = document.createElement('div');
+                const isBooked = bookedSlots.includes(i);
+                const slotType = i <= 8 ? 'CAR' : i <= 16 ? 'BIKE' : 'VIP';
+                
+                slot.className = `slot ${isBooked ? 'booked' : 'available'}`;
+                slot.innerHTML = `<span>${i < 10 ? '0' + i : i}</span><small>${slotType}</small>`;
+                
+                if (!isBooked) {
+                    availableCount++;
+                    slot.onclick = () => selectSlot(slot, i);
+                }
+                
+                container.appendChild(slot);
+            }
+            
+            // Update available slots count
+            document.getElementById('availableSlots').textContent = availableCount;
+            
+            // Update booking summary
+            updateBookingSummary();
+        }
+        
+        function selectSlot(slotElement, slotNumber) {
+            // Remove selection from all slots
+            document.querySelectorAll('.slot').forEach(s => {
+                s.classList.remove('selected');
+            });
+            
+            // Add selection to clicked slot
+            slotElement.classList.add('selected');
+            selectedSlot = slotNumber;
+            
+            // Update booking summary
+            updateBookingSummary();
+        }
+        
+        function updateBookingSummary() {
+            const location = locations[selectedLocation];
+            document.getElementById('summaryLocation').textContent = location.name;
+            
+            if (selectedSlot) {
+                document.getElementById('summarySlot').textContent = `Slot ${selectedSlot}`;
+            } else {
+                document.getElementById('summarySlot').textContent = 'None selected';
+            }
+            
+            calculateTotal();
+        }
+        
+        function calculateTotal() {
+            const location = locations[selectedLocation];
+            const duration = parseInt(document.getElementById('bookingDuration').value);
+            const total = location.rate * duration;
+            
+            document.getElementById('summaryTotal').textContent = `₹${total}`;
+        }
+        
+        function confirmBooking() {
+            if (!selectedSlot) {
+                showMessage('Please select a parking slot first!', 'error');
+                return;
+            }
+            
+            const location = locations[selectedLocation];
+            const duration = parseInt(document.getElementById('bookingDuration').value);
+            const total = location.rate * duration;
+            
+            if (currentUser.balance < total) {
+                showMessage(`Insufficient balance! You need ₹${total} but have only ₹${currentUser.balance}`, 'error');
+                return;
+            }
+            
+            // Deduct amount
+            currentUser.balance -= total;
+            currentUser.bookings = (currentUser.bookings || 0) + 1;
+            
+            // Update localStorage
+            const userIndex = users.findIndex(u => u.id === currentUser.id);
+            if (userIndex !== -1) {
+                users[userIndex] = currentUser;
+                localStorage.setItem('hp_users', JSON.stringify(users));
+            }
+            
+            // Add booking
+            const newBooking = {
+                id: bookings.length + 1,
+                userId: currentUser.id,
+                location: location.name,
+                slot: selectedSlot,
+                date: new Date().toISOString(),
+                duration: duration,
+                amount: total
+            };
+            bookings.push(newBooking);
+            localStorage.setItem('hp_bookings', JSON.stringify(bookings));
+            
+            // Update dashboard
+            updateDashboard();
+            
+            // Show success
+            showMessage(`✅ Booking confirmed!\n\n📍 ${location.name}\n🅿️ Slot: ${selectedSlot}\n⏰ Duration: ${duration} hours\n💰 Amount: ₹${total}`, 'success');
+            
+            // Reset selection
+            selectedSlot = null;
+            document.querySelectorAll('.slot').forEach(s => s.classList.remove('selected'));
+            updateBookingSummary();
+        }
+        
+        // ============================================
+        // UTILITY FUNCTIONS
+        // ============================================
+        function showMessage(text, type) {
+            alert(text);
+        }
+        
+        // ============================================
+        // INITIALIZATION
+        // ============================================
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log('Website loaded');
+            updateNavigation();
+            
+            // Setup event listeners
+            document.getElementById('bookingDuration').addEventListener('change', calculateTotal);
+            
+            // Demo credentials
+            console.log('Demo Accounts:');
+            console.log('1. Email: john@example.com, Password: 123456');
+            console.log('2. Email: fatima@example.com, Password: 123456');
+        });
+    </script>
+</body>
+</html>
